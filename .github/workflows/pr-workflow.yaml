@@ -1,0 +1,32 @@
+# This workflow uses actions that are not certified by GitHub.
+
+# This workflow will build the image and then run a few commands inside of the image 
+# to verify the tools
+name: Test the infrastructure-tools docker image
+
+on:
+  pull_request
+
+env:
+  TEST_TAG: test/infrastructure-tools:ci-test
+
+jobs:
+  push_to_registry:
+    name: Test the infrastructure-tools docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Build and export to Docker
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          load: true
+          tags: ${{ env.TEST_TAG }}
+
+      - name: Test
+        run: |
+          docker run --rm ${{ env.TEST_TAG }} sh -c "kubectl version --client"
+          docker run --rm ${{ env.TEST_TAG }} sh -c "helm version --client"
+          docker run --rm ${{ env.TEST_TAG }} sh -c "aws --version"
