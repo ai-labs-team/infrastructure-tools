@@ -1,7 +1,5 @@
-# this action requires that two secrets are defined:
-# - DOCKER_USERNAME is the username for docker hub
-# - DOCKER_PASSWORD is the password or Access Token 
-#     (with Read & Write permissions) to authenticate with the username above
+# This workflow uses actions that are not certified by GitHub.
+
 name: Publish infrastructure-tools image to Docker hub
 
 on:
