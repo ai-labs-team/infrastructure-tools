@@ -5,7 +5,7 @@ COPY python-requirements.txt .
 
 # Install AWS CLI, jq and CA certificates
 RUN apk -v --update add \
-    python \
+    python3 \
     py-pip \
     groff \
     less \
@@ -21,7 +21,6 @@ RUN apk -v --update add \
     && \
     pip install --upgrade -r python-requirements.txt && \
     pip freeze && \
-    apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 
 # Install `cfn-create-or-update`, `@fountainhead/branch-officer`,
