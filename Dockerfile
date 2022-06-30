@@ -31,7 +31,7 @@ RUN npm install -g cfn-create-or-update \
     && \
     npm cache clean --force
 
-# Install kubectl, AWS ECR Credential Helper, Helm client,, Helm3 client, Helmfile and Docker CLI
+# Install kubectl, AWS ECR Credential Helper, Helm client, Helm3 client, Helmfile and Docker CLI
 COPY kubectl docker-credential-ecr-login helm helm3 helmfile docker docker-18.09.5 pup slack /bin/
 
 # Download, compile and install git-crypt
