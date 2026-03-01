@@ -1,6 +1,6 @@
 boto3==1.24.2
 pytz==2022.1
-awscli==1.25.2
+awscli==1.44.38
 s3cmd==2.2.0
 python-magic
 yq
